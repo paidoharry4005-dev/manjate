@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Famosos do Mundo - Curiosidades</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* ACESSIBILIDADE */
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 10px;
+            background: #111;
+            color: white;
+            padding: 10px 15px;
+            z-index: 9999;
+        }
+
+        .skip-link:focus {
+            top: 10px;
+        }
+
+        .acessibilidade {
+            background: #222;
+            color: white;
+            padding: 8px;
+            text-align: right;
+        }
+
+        .acessibilidade button {
+            background: white;
+            color: #222;
+            border: none;
+            padding: 7px 10px;
+            margin: 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .acessibilidade button:hover {
+            background: #ddd;
+        }
+
+        /* CABEÇALHO */
+        header {
+            background: #111827;
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: #38bdf8;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(120deg, #111827, #2563eb);
+            color: white;
+            padding: 90px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 22px;
+            background: white;
+            color: #1d4ed8;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #e5e7eb;
+        }
+
+        /* CONTEÚDO */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .titulo h2 {
+            font-size: 32px;
+            color: #111827;
+        }
+
+        .titulo p {
+            margin-top: 10px;
+            color: #555;
+        }
+
+        /* ESTATÍSTICAS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: -40px;
+            position: relative;
+        }
+
+        .stat {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat h3 {
+            font-size: 30px;
+            color: #2563eb;
+        }
+
+        /* PESQUISA */
+        .pesquisa {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pesquisa input {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        /* FILTROS */
+        .filtros {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .filtros button {
+            border: none;
+            background: #ddd;
+            padding: 10px 16px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filtros button:hover,
+        .filtros button.ativo {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .categoria {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            margin: 8px 0;
+            font-size: 23px;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .card button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            border: none;
+            background: #111827;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #2563eb;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .evento {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #2563eb;
+            border-radius: 5px;
+        }
+
+        .evento strong {
+            color: #2563eb;
+        }
+
+        /* SOBRE */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .sobre-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .sobre-box h3 {
+            margin-bottom: 10px;
+            color: #2563eb;
+        }
+
+        /* DOWNLOAD */
+        .download {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .download h2 {
+            margin-bottom: 15px;
+        }
+
+        .download a {
+            display: inline-block;
+            margin-top: 20px;
+            background: #2563eb;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .download a:hover {
+            background: #1d4ed8;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            background: #e5e7eb;
+        }
+
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .formulario,
+        .contacto-info {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .formulario label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .formulario input,
+        .formulario textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+        }
+
+        .formulario textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .formulario button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* WHATSAPP */
+        .whatsapp-box {
+            background: #f1fdf5;
+            border: 1px solid #b7e4c7;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .whatsapp-box h3 {
+            color: #128c7e;
+            margin-bottom: 8px;
+        }
+
+        .whatsapp-box p {
+            margin-bottom: 12px;
+        }
+
+        .numero {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 3000;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .fechar {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 25px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        /* BOTÃO TOPO */
+        #topo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* CONTRASTE */
+        body.alto-contraste {
+            background: #000;
+            color: #fff;
+        }
+
+        body.alto-contraste header,
+        body.alto-contraste .card,
+        body.alto-contraste .stat,
+        body.alto-contraste .sobre-box,
+        body.alto-contraste .formulario,
+        body.alto-contraste .contacto-info,
+        body.alto-contraste .evento,
+        body.alto-contraste .modal-content {
+            background: #000;
+            color: #fff;
+            border: 1px solid white;
+        }
+
+        body.alto-contraste p,
+        body.alto-contraste .card p {
+            color: white;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sobre-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .cards,
+            .contacto-grid,
+            .multimedia-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* AUMENTO DE TEXTO */
+        body.texto-grande {
+            font-size: 18px;
+        }
+
+        body.texto-grande .hero h1 {
+            font-size: 50px;
+        }
+
+        body.texto-pequeno {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#conteudo" class="skip-link">
+        Saltar para o conteúdo
+    </a>
+
+    <!-- ACESSIBILIDADE -->
+    <div class="acessibilidade">
+        <strong>Acessibilidade:</strong>
+
+        <button onclick="aumentarTexto()">A+</button>
+        <button onclick="diminuirTexto()">A-</button>
+        <button onclick="textoNormal()">Normal</button>
+        <button onclick="contraste()">Alto contraste</button>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="header-content">
+
+            <div class="logo">
+                🌎 Famosos do Mundo
+            </div>
+
+            <nav aria-label="Menu principal">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#famosos">Famosos</a></li>
+                    <li><a href="#curiosidades">Curiosidades</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#multimedia">Multimédia</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <main id="conteudo">
+
+        <section class="hero" id="inicio">
+
+            <h1>Curiosidades sobre Famosos</h1>
+
+            <p>
+                Descubra histórias, curiosidades e informações interessantes
+                sobre algumas das pessoas mais conhecidas do mundo.
+            </p>
+
+            <a href="#famosos" class="btn">
+                Explorar famosos
+            </a>
+
+        </section>
+
+        <!-- ESTATÍSTICAS -->
+        <div class="container">
+
+            <div class="stats">
+
+                <div class="stat">
+                    <h3>12+</h3>
+                    <p>Famosos</p>
+                </div>
+
+                <div class="stat">
+                    <h3>6</h3>
+                    <p>Categorias</p>
+                </div>
+
+                <div class="stat">
+                    <h3>30+</h3>
+                    <p>Curiosidades</p>
+                </div>
+
+                <div class="stat">
+                    <h3>100%</h3>
+                    <p>Gratuito</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FAMOSOS -->
+        <section id="famosos">
+
+            <div class="container">
+
+                <div class="titulo">
+
+                    <h2>Conheça os famosos</h2>
+
+                    <p>
+                        Pesquise pelo nome ou escolha uma categoria.
+                    </p>
+
+                </div>
+
+                <div class="pesquisa">
+
+                    <input
+                        type="search"
+                        id="pesquisa"
+                        placeholder="Pesquisar famoso..."
+                        aria-label="Pesquisar famoso"
+                    >
+
+                </div>
+
+                <div class="filtros">
+
+                    <button class="ativo" onclick="filtrar('todos', this)">
+                        Todos
+                    </button>
+
+                    <button onclick="filtrar('desporto', this)">
+                        Desporto
+                    </button>
+
+                    <button onclick="filtrar('musica', this)">
+                        Música
+                    </button>
+
+                    <button onclick="filtrar('cinema', this)">
+                        Cinema
+                    </button>
+
+                    <button onclick="filtrar('negocios', this)">
+                        Negócios
+                    </button>
+
+                </div>
+
+                <div class="cards">
+
+                    <!-- CRISTIANO -->
+                    <article class="card" data-categoria="desporto">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+                            alt="Cristiano Ronaldo durante um jogo de futebol"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                DESPORTO
+                            </span>
+
+                            <h3>Cristiano Ronaldo</h3>
+
+                            <p>
+                                Um dos futebolistas mais conhecidos do mundo.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Cristiano Ronaldo',
+                                'Cristiano Ronaldo nasceu na Madeira, Portugal. Começou a sua carreira profissional ainda jovem e tornou-se conhecido pelo seu desempenho no futebol.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- LEONARDO -->
+                    <article class="card" data-categoria="cinema">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg"
+                            alt="Leonardo DiCaprio num evento"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                CINEMA
+                            </span>
+
+                            <h3>Leonardo DiCaprio</h3>
+
+                            <p>
+                                Ator conhecido por vários filmes de sucesso.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Leonardo DiCaprio',
+                                'Leonardo DiCaprio começou a trabalhar como ator ainda jovem. Tornou-se mundialmente conhecido por filmes como Titanic, Inception e The Revenant.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- BEYONCE -->
+                    <article class="card" data-categoria="musica">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/1/19/Beyonce_-_The_Mrs._Carter_Show_Tour%2C_Glasgow_SSE_Hydro.jpg"
+                            alt="Beyoncé cantando durante um espetáculo"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                MÚSICA
+                            </span>
+
+                            <h3>Beyoncé</h3>
+
+                            <p>
+                                Cantora e artista internacionalmente reconhecida.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Beyoncé',
+                                'Beyoncé iniciou a sua carreira musical ainda jovem e tornou-se uma das artistas mais conhecidas da música internacional.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- TAYLOR -->
+                    <article class="card" data-categoria="musica">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Taylor_Swift_2_-_2019_by_Glenn_Francis.jpg"
+                            alt="Taylor Swift em apresentação"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                MÚSICA
+                            </span>
+
+                            <h3>Taylor Swift</h3>
+
+                            <p>
+                                Cantora e compositora norte-americana.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Taylor Swift',
+                                'Taylor Swift começou a escrever músicas ainda muito jovem e inicialmente ficou conhecida no género country antes de alcançar grande sucesso no pop.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- THE ROCK -->
+                    <article class="card" data-categoria="cinema">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Dwayne_Johnson_2014.jpg"
+                            alt="Dwayne Johnson sorrindo"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                CINEMA
+                            </span>
+
+                            <h3>Dwayne Johnson</h3>
+
+                            <p>
+                                Ator e antigo lutador profissional.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Dwayne Johnson',
+                                'Dwayne Johnson ficou conhecido inicialmente no wrestling profissional e posteriormente construiu uma carreira de sucesso no cinema.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- RIHANNA -->
+                    <article class="card" data-categoria="musica">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/1/14/Rihanna_Fenty_2018.png"
+                            alt="Rihanna durante um evento"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                MÚSICA
+                            </span>
+
+                            <h3>Rihanna</h3>
+
+                            <p>
+                                Cantora e empresária de Barbados.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Rihanna',
+                                'Rihanna nasceu em Barbados e tornou-se mundialmente conhecida através da música. Também construiu uma carreira empresarial no setor da moda e beleza.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- MICHAEL -->
+                    <article class="card" data-categoria="musica">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Michael_Jackson_1988.jpg"
+                            alt="Michael Jackson durante uma apresentação"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                MÚSICA
+                            </span>
+
+                            <h3>Michael Jackson</h3>
+
+                            <p>
+                                Um dos artistas mais influentes da música pop.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Michael Jackson',
+                                'Michael Jackson começou a sua carreira ainda criança como membro dos Jackson 5 e posteriormente construiu uma carreira solo de grande sucesso.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- WILL SMITH -->
+                    <article class="card" data-categoria="cinema">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Will_Smith_2017.jpg"
+                            alt="Will Smith num evento"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                CINEMA
+                            </span>
+
+                            <h3>Will Smith</h3>
+
+                            <p>
+                                Ator, produtor e músico norte-americano.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Will Smith',
+                                'Antes de se tornar um grande nome do cinema, Will Smith ganhou popularidade através da série The Fresh Prince of Bel-Air.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- MESSI -->
+                    <article class="card" data-categoria="desporto">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Lionel_Messi_WC2022.jpg"
+                            alt="Lionel Messi durante uma partida"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                DESPORTO
+                            </span>
+
+                            <h3>Lionel Messi</h3>
+
+                            <p>
+                                Um dos futebolistas mais conhecidos da história.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Lionel Messi',
+                                'Lionel Messi nasceu na Argentina e começou a destacar-se no futebol desde muito jovem. Construiu grande parte da sua carreira no Barcelona.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- ELON -->
+                    <article class="card" data-categoria="negocios">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society.jpg"
+                            alt="Elon Musk num evento"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                NEGÓCIOS
+                            </span>
+
+                            <h3>Elon Musk</h3>
+
+                            <p>
+                                Empresário ligado a empresas de tecnologia.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Elon Musk',
+                                'Elon Musk participou na criação e desenvolvimento de várias empresas ligadas à tecnologia, internet, energia e exploração espacial.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- ADELE -->
+                    <article class="card" data-categoria="musica">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Adele_2016.jpg"
+                            alt="Adele durante uma apresentação"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                MÚSICA
+                            </span>
+
+                            <h3>Adele</h3>
+
+                            <p>
+                                Cantora britânica conhecida pela sua voz.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Adele',
+                                'Adele ganhou reconhecimento internacional através das suas músicas e ficou conhecida principalmente pelo seu estilo vocal e pelas suas baladas.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                    <!-- JACKIE -->
+                    <article class="card" data-categoria="cinema">
+
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Jackie_Chan_Cannes_2012.jpg"
+                            alt="Jackie Chan num evento"
+                        >
+
+                        <div class="card-content">
+
+                            <span class="categoria">
+                                CINEMA
+                            </span>
+
+                            <h3>Jackie Chan</h3>
+
+                            <p>
+                                Ator e especialista em artes marciais.
+                            </p>
+
+                            <button onclick="abrirModal(
+                                'Jackie Chan',
+                                'Jackie Chan ficou conhecido mundialmente pelos seus filmes de ação e pela combinação de artes marciais com comédia.'
+                            )">
+                                Ver curiosidade
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CURIOSIDADES -->
+        <section id="curiosidades">
+
+            <div class="container">
+
+                <div class="titulo">
+
+                    <h2>Curiosidades rápidas</h2>
+
+                    <p>
+                        Alguns acontecimentos interessantes.
+                    </p>
+
+                </div>
+
+                <div class="timeline">
+
+                    <div class="evento">
+                        <strong>Futebol:</strong>
+                        Cristiano Ronaldo e Lionel Messi marcaram uma era
+                        importante do futebol mundial.
+                    </div>
+
+                    <div class="evento">
+                        <strong>Música:</strong>
+                        Michael Jackson é frequentemente associado à evolução
+                        do videoclipe como forma de entretenimento.
+                    </div>
+
+                    <div class="evento">
+                        <strong>Cinema:</strong>
+                        Jackie Chan combinou artes marciais, ação e comédia
+                        em muitos dos seus filmes.
+                    </div>
+
+                    <div class="evento">
+                        <strong>Música:</strong>
+                        Taylor Swift começou a escrever músicas desde muito
+                        jovem.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- MULTIMÉDIA -->
+        <section id="multimedia" class="multimedia">
+            <div class="container">
+                <div class="titulo">
+                    <h2>🎬 Multimédia</h2>
+                    <p>Veja um vídeo relacionado com Cristiano Ronaldo e utilize também a opção de áudio.</p>
+                </div>
+
+                <div class="multimedia-grid">
+                    <div class="media-box">
+                        <h3>🎥 Vídeo – Cristiano Ronaldo</h3>
+                        <video controls preload="metadata">
+                            <source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/CRISTIANO_RONALDO%27S_first_Real_Madrid_training_session_of_the_new_season%21.webm" type="video/webm">
+                            O seu navegador não suporta a reprodução de vídeo.
+                        </video>
+                        <p class="media-credit">
+                            Fonte: Real Madrid, através do Wikimedia Commons. Recurso sob licença Creative Commons BY 3.0.
+                            <a href="https://commons.wikimedia.org/wiki/File:CRISTIANO_RONALDO%27S_first_Real_Madrid_training_session_of_the_new_season%21.webm" target="_blank" rel="noopener noreferrer">Ver fonte e licença</a>.
+                        </p>
+                    </div>
+
+                    <div class="media-box">
+                        <h3>🔊 Áudio</h3>
+                        <p>Use os controlos abaixo para reproduzir a faixa sonora do mesmo recurso.</p>
+                        <audio controls preload="metadata">
+                            <source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/CRISTIANO_RONALDO%27S_first_Real_Madrid_training_session_of_the_new_season%21.webm" type="audio/webm">
+                            O seu navegador não suporta a reprodução de áudio.
+                        </audio>
+                        <p class="media-credit">O áudio utiliza a faixa sonora disponível no vídeo acima.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE -->
+        <section id="sobre">
+
+            <div class="container">
+
+                <div class="titulo">
+
+                    <h2>Sobre o site</h2>
+
+                    <p>
+                        Um projeto criado para apresentar curiosidades de forma
+                        simples e acessível.
+                    </p>
+
+                </div>
+
+                <div class="sobre-grid">
+
+                    <div class="sobre-box">
+
+                        <h3>♿ Acessibilidade</h3>
+
+                        <p>
+                            O site possui ferramentas para aumentar ou diminuir
+                            o tamanho do texto e ativar o modo de alto contraste.
+                        </p>
+
+                    </div>
+
+                    <div class="sobre-box">
+
+                        <h3>📱 Responsivo</h3>
+
+                        <p>
+                            A página adapta-se a computadores, tablets e
+                            telemóveis.
+                        </p>
+
+                    </div>
+
+                    <div class="sobre-box">
+
+                        <h3>🔎 Fácil utilização</h3>
+
+                        <p>
+                            Possui menu simples, pesquisa, filtros e botões
+                            identificados para facilitar a navegação.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- DOWNLOAD PDF -->
+        <section class="download">
+
+            <h2>📄 Quer saber mais?</h2>
+
+            <p>
+                Baixe gratuitamente o nosso PDF com outras informações
+                e curiosidades sobre famosos.
+            </p>
+
+            <a
+                href="assets/Documento_Download_Famosos_do_Mundo(1).pdf"
+                download
+            >
+                📥 Baixar PDF
+            </a>
+
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="contacto">
+
+            <div class="container">
+
+                <div class="titulo">
+
+                    <h2>Entre em contacto</h2>
+
+                    <p>
+                        Tem alguma sugestão? Entre em contacto connosco.
+                    </p>
+
+                </div>
+
+                <div class="contacto-grid">
+
+                    <!-- INFORMAÇÕES -->
+                    <div class="contacto-info">
+
+                        <h3>Fale connosco</h3>
+
+                        <p>
+                            Pode enviar uma mensagem através do formulário
+                            ou falar diretamente connosco pelo WhatsApp.
+                        </p>
+
+                        <br>
+
+                        <!-- WHATSAPP -->
+                        <div class="whatsapp-box">
+
+                            <h3>💬 Conversar pelo WhatsApp</h3>
+
+                            <p>
+                                Quer falar connosco de forma rápida?
+                                Envie uma mensagem pelo WhatsApp.
+                            </p>
+
+                            <p class="numero">
+                                📱 +258 84 899 2005
+                            </p>
+
+                            <a
+                                href="https://wa.me/258848992005"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="whatsapp-btn"
+                                aria-label="Conversar connosco pelo WhatsApp"
+                            >
+                                💬 Abrir WhatsApp
+                            </a>
+
+                        </div>
+
+                        <p>
+                            Respondemos às mensagens assim que possível.
+                        </p>
+
+                    </div>
+
+                    <!-- FORMULÁRIO -->
+                    <div class="formulario">
+
+                        <h3>Enviar mensagem</h3>
+
+                        <form onsubmit="enviarFormulario(event)">
+
+                            <label for="nome">
+                                Nome:
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                required
+                                placeholder="Digite o seu nome"
+                            >
+
+                            <label for="email">
+                                Email:
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                required
+                                placeholder="Digite o seu email"
+                            >
+
+                            <label for="mensagem">
+                                Mensagem:
+                            </label>
+
+                            <textarea
+                                id="mensagem"
+                                required
+                                placeholder="Escreva a sua mensagem"
+                            ></textarea>
+
+                            <button type="submit">
+                                Enviar mensagem
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer style="
+        background:#111827;
+        color:white;
+        text-align:center;
+        padding:25px;
+    ">
+
+        <p>
+            © 2026 Famosos do Mundo - Todos os direitos reservados.
+        </p>
+
+        <p>
+            Site desenvolvido com HTML, CSS e JavaScript.
+        </p>
+
+    </footer>
+
+    <!-- MODAL -->
+    <div
+        class="modal"
+        id="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitulo"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="fechar"
+                onclick="fecharModal()"
+                aria-label="Fechar janela"
+            >
+                ×
+            </button>
+
+            <h2 id="modalTitulo"></h2>
+
+            <p id="modalTexto"></p>
+
+        </div>
+
+    </div>
+
+    <!-- BOTÃO TOPO -->
+    <button
+        id="topo"
+        onclick="voltarTopo()"
+        aria-label="Voltar ao topo"
+    >
+        ↑
+    </button>
+
+    <script>
+
+        /* AUMENTAR TEXTO */
+        function aumentarTexto() {
+
+            document.body.classList.remove("texto-pequeno");
+            document.body.classList.add("texto-grande");
+
+        }
+
+        /* DIMINUIR TEXTO */
+        function diminuirTexto() {
+
+            document.body.classList.remove("texto-grande");
+            document.body.classList.add("texto-pequeno");
+
+        }
+
+        /* TEXTO NORMAL */
+        function textoNormal() {
+
+            document.body.classList.remove("texto-grande");
+            document.body.classList.remove("texto-pequeno");
+
+        }
+
+        /* ALTO CONTRASTE */
+        function contraste() {
+
+            document.body.classList.toggle("alto-contraste");
+
+        }
+
+        /* MODAL */
+        function abrirModal(titulo, texto) {
+
+            document.getElementById("modalTitulo").textContent = titulo;
+
+            document.getElementById("modalTexto").textContent = texto;
+
+            document.getElementById("modal").style.display = "flex";
+
+        }
+
+        function fecharModal() {
+
+            document.getElementById("modal").style.display = "none";
+
+        }
+
+        /* FECHAR MODAL CLICANDO FORA */
+        window.onclick = function(event) {
+
+            let modal = document.getElementById("modal");
+
+            if (event.target === modal) {
+
+                fecharModal();
+
+            }
+
+        }
+
+        /* TECLA ESC */
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+
+                fecharModal();
+
+            }
+
+        });
+
+        /* FILTROS */
+        function filtrar(categoria, botao) {
+
+            let cards = document.querySelectorAll(".card");
+
+            let botoes = document.querySelectorAll(".filtros button");
+
+            botoes.forEach(function(btn) {
+
+                btn.classList.remove("ativo");
+
+            });
+
+            botao.classList.add("ativo");
+
+            cards.forEach(function(card) {
+
+                if (
+                    categoria === "todos" ||
+                    card.dataset.categoria === categoria
+                ) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+        /* PESQUISA */
+        document
+            .getElementById("pesquisa")
+            .addEventListener("input", function() {
+
+                let texto = this.value.toLowerCase();
+
+                let cards = document.querySelectorAll(".card");
+
+                cards.forEach(function(card) {
+
+                    let nome = card
+                        .querySelector("h3")
+                        .textContent
+                        .toLowerCase();
+
+                    if (nome.includes(texto)) {
+
+                        card.style.display = "block";
+
+                    } else {
+
+                        card.style.display = "none";
+
+                    }
+
+                });
+
+            });
+
+        /* FORMULÁRIO */
+        function enviarFormulario(event) {
+
+            event.preventDefault();
+
+            let nome = document.getElementById("nome").value;
+
+            alert(
+                "Obrigado, " + nome +
+                "! A sua mensagem foi recebida."
+            );
+
+            document.querySelector("form").reset();
+
+        }
+
+        /* BOTÃO VOLTAR AO TOPO */
+        window.addEventListener("scroll", function() {
+
+            let botao = document.getElementById("topo");
+
+            if (window.scrollY > 400) {
+
+                botao.style.display = "block";
+
+            } else {
+
+                botao.style.display = "none";
+
+            }
+
+        });
+
+        function voltarTopo() {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
